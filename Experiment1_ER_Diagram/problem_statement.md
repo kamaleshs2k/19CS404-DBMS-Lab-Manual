@@ -22,31 +22,42 @@ FlexiFit Gym wants a database to manage its members, trainers, and fitness progr
 - Payments tracked for memberships and sessions.
 
 ### ER Diagram:
-*Paste or attach your diagram here*  
-![ER Diagram](er_diagram_fitness.png)
+#### City Fitness Club Management
+<img width="1015" height="830" alt="image" src="https://github.com/user-attachments/assets/9f1d15ab-2dd3-4387-abca-3361bf0c11ee" />
 
 ### Entities and Attributes
 
 | Entity | Attributes (PK, FK) | Notes |
 |--------|--------------------|-------|
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
+| LOGIN|	login_id (PK), login_username, login_password| Stores user login details.|
+| USER |	user_id (PK), user_mobile | user_mail	General user information.|
+| ROLES |	role_id (PK), role_name, role_desc	|Defines user roles.|
+| PERMISSION |	per_id (PK), per_name, per_module	| Permissions linked to roles.|
+| MEMBER |	mem_id (PK), mem_name, mem_add, user_id (FK)	| A user can be a member.|
+| GYM	| gym_id (PK), gym_type, gym_desc	| Gym details.|
+| PAYMENT |	pay_id (PK), pay_cus_id, pay_amt, mem_id (FK), gym_id (FK)	|Payment transactions.|
+| TRAINER |	trn_id (PK), trn_name, trn_add	| Trainer details.|
 
 ### Relationships and Constraints
 
 | Relationship | Cardinality | Participation | Notes |
 |--------------|------------|---------------|-------|
-|              |            |               |       |
-|              |            |               |       |
-|              |            |               |       |
+| USER – LOGIN	|1:1|	Total|	Each user must have one login.|
+|USER – ROLES (HAS)|	M:N|	Partial|	A user can have multiple roles; roles can belong to multiple users.|
+|ROLES – PERMISSION|	1:N|	Partial	|A role can have multiple permissions, but each permission belongs to one role.|
+|USER – MEMBER|	1:1|	Partial|	A user may also be a member.|
+|MEMBER – GYM (HAS)|	M:N|	Partial|	A member can be associated with many gyms, and a gym can have many members.|
+|MEMBER – PAYMENT	|1:N|	Total|	A member can make multiple payments.|
+|PAYMENT – GYM|	N:1	|Total|	Payment is made for a particular gym.|
+|USER – TRAINER (MANAGE)|	1:N|	Partial|	A user (admin) manages many trainers.|
+|TRAINER – PAYMENT (via MANAGE)|	1:N|	Partial|	Trainers are linked to payments indirectly.|
 
 ### Assumptions
-- 
-- 
-- 
+- Each user has exactly one login credential (no shared accounts).
+- A user may or may not be a member (staff vs. customer).
+- Payments are linked to members and gyms, not directly to trainers.
+- A gym can have multiple members and trainers.
+- Roles and permissions are flexible (supporting M:N mappings).
 
 ---
 
