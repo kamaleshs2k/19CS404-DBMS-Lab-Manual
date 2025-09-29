@@ -105,123 +105,151 @@ CREATE TABLE Table_Name (
 
 **Question 1**
 --
--- Paste Question 1 here
+<img width="912" height="322" alt="image" src="https://github.com/user-attachments/assets/3dfe120e-62cc-4b27-8a5a-7c8277b7b1a6" />
 
 ```sql
--- Paste your SQL code below for Question 1
+CREATE TABLE Departments(DepartmentID INTEGER, DepartmentName TEXT);
 ```
 
 **Output:**
 
-![Output1](output.png)
+<img width="1307" height="342" alt="image" src="https://github.com/user-attachments/assets/0882320e-f7b4-46be-9840-467e69b901de" />
+
 
 **Question 2**
 ---
--- Paste Question 2 here
+<img width="763" height="378" alt="image" src="https://github.com/user-attachments/assets/94562634-72a8-4bf1-bf3a-a49459aa8faa" />
+
 
 ```sql
--- Paste your SQL code below for Question 2
+INSERT into Books (ISBN, Title, Author)
+VALUES ('978-6655443321','Big Data Analytics','Karen Adams');
 ```
 
 **Output:**
 
-![Output2](output.png)
+<img width="1080" height="312" alt="image" src="https://github.com/user-attachments/assets/70ddf893-2855-4b22-a875-a5ab87aa521f" />
+
 
 **Question 3**
 ---
--- Paste Question 3 here
+<img width="620" height="287" alt="image" src="https://github.com/user-attachments/assets/ce563d09-27cb-41fe-9803-b0f08f9e155f" />
+
 
 ```sql
--- Paste your SQL code below for Question 3
+INSERT into Employee(EmployeeID, Name, Department, Salary ) select EmployeeID, Name, Department, Salary  from Former_employees  ;
 ```
 
 **Output:**
 
-![Output3](output.png)
+<img width="1160" height="282" alt="image" src="https://github.com/user-attachments/assets/96c11b02-584b-4999-83a2-31c4e7d782dc" />
 
 **Question 4**
 ---
--- Paste Question 4 here
+<img width="1071" height="301" alt="image" src="https://github.com/user-attachments/assets/de472d98-b9a1-4cf5-a4eb-284467b8fe8a" />
 
 ```sql
--- Paste your SQL code below for Question 4
+ALTER TABLE Employees ADD COLUMN salary INTEGER CHECK(salary>0);
 ```
 
 **Output:**
 
-![Output4](output.png)
+<img width="1327" height="305" alt="image" src="https://github.com/user-attachments/assets/2c32fcf0-0740-4d44-8a7e-57f6a7f0aa55" />
 
 **Question 5**
 ---
--- Paste Question 5 here
+<img width="1123" height="273" alt="image" src="https://github.com/user-attachments/assets/65ad3990-910f-4654-b30c-bbdd628e99a8" />
 
 ```sql
--- Paste your SQL code below for Question 5
+CREATE TABLE Department(DepartmentID INTEGER PRIMARY KEY, DepartmentName TEXT UNIQUE NOT NULL, Location TEXT);
 ```
 
 **Output:**
 
-![Output5](output.png)
+<img width="1384" height="183" alt="image" src="https://github.com/user-attachments/assets/d67a0e4d-714d-4309-afef-8e4aae664081" />
 
 **Question 6**
 ---
--- Paste Question 6 here
+<img width="680" height="385" alt="image" src="https://github.com/user-attachments/assets/bdcde415-8647-4094-9606-e4189a2b7d54" />
 
 ```sql
--- Paste your SQL code below for Question 6
+INSERT INTO Customers(ID,NAME,AGE,ADDRESS,SALARY) VALUES(1,'Ramesh',32,'Ahmedabad','2000');
+INSERT INTO Customers(ID,NAME,AGE,ADDRESS,SALARY) VALUES(2,'Khilan',25,'Delhi','1500'); 
+INSERT INTO Customers(ID,NAME,AGE,ADDRESS,SALARY) VALUES(3,'Kaushik',23,'Kota','2000');
 ```
 
 **Output:**
 
-![Output6](output.png)
+<img width="1121" height="280" alt="image" src="https://github.com/user-attachments/assets/e72f594c-d6ab-47e7-979b-1e10e50c7ccf" />
 
 **Question 7**
 ---
--- Paste Question 7 here
+<img width="1318" height="334" alt="image" src="https://github.com/user-attachments/assets/8cf9a2bb-2c18-4f0d-8dcb-1043c62d7198" />
 
 ```sql
--- Paste your SQL code below for Question 7
+CREATE TABLE Employees(EmployeeID INTEGER PRIMARY KEY,
+FirstName TEXT NOT NULL,
+LastName TEXT NOT NULL,
+Email TEXT UNIQUE,
+Salary INTEGER CHECK(Salary >0),
+DepartmentID INTEGER,
+FOREIGN KEY (DepartmentID)REFERENCES DepartmentS);
 ```
 
 **Output:**
 
-![Output7](output.png)
+<img width="1341" height="349" alt="image" src="https://github.com/user-attachments/assets/a53aa065-a8bb-405c-9dab-684b1d8a4fb7" />
 
 **Question 8**
 ---
--- Paste Question 8 here
+<img width="863" height="399" alt="image" src="https://github.com/user-attachments/assets/621e6648-ac19-4d0a-b2f4-c304cc9dc0fa" />
 
 ```sql
--- Paste your SQL code below for Question 8
+ALTER TABLE customer ADD COLUMN discount DECIMAL(5,2);
 ```
 
 **Output:**
 
-![Output8](output.png)
+<img width="1090" height="214" alt="image" src="https://github.com/user-attachments/assets/f217364c-7d99-4fe0-a327-fcddc6ec7e4e" />
 
 **Question 9**
 ---
--- Paste Question 9 here
+<img width="907" height="338" alt="image" src="https://github.com/user-attachments/assets/2c940697-8938-4609-af30-db47c8da3de3" />
 
 ```sql
--- Paste your SQL code below for Question 9
+CREATE TABLE products(
+product_id INTEGER PRIMARY KEY,
+product_name TEXT NOT NULL,
+list_price DECIMAL(10,2) NOT NULL CHECK(list_price>=discount)CHECK(list_price>=0),
+discount DECIMAL(10,2) DEFAULT'0' NOT NULL CHECK(discount >=0)
+);
 ```
 
 **Output:**
 
-![Output9](output.png)
+<img width="1065" height="184" alt="image" src="https://github.com/user-attachments/assets/030cf846-c433-4d8a-96e9-66af8cbd04de" />
 
 **Question 10**
 ---
--- Paste Question 10 here
+<img width="1463" height="665" alt="image" src="https://github.com/user-attachments/assets/c395c782-926a-4db1-90d5-4809bb5c962d" />
 
 ```sql
--- Paste your SQL code below for Question 10
+CREATE TABLE item(
+item_id TEXT PRIMARY KEY,
+item_desc TEXT NOT NULL,
+rate INTEGER NOT NULL,
+icom_id TEXT(4),
+FOREIGN KEY(icom_id)REFERENCES company(com_id)
+on update set null
+on delete set null
+);
+
 ```
 
 **Output:**
 
-![Output10](output.png)
+<img width="1841" height="496" alt="image" src="https://github.com/user-attachments/assets/e5c87c0a-f45e-43c5-b01e-75d9d9692782" />
+
 
 
 ## RESULT
