@@ -52,7 +52,8 @@ SELECT column1, column2 FROM table_name WHERE condition;
 **Program**
 ```sql
 UPDATE purchases
-set per_unit_price = 25,total_price = quantity*25 where purchase_date ='2022-08-15' and product_id=12;
+set per_unit_price = 25,total_price = quantity*25 
+where purchase_date ='2022-08-15' and product_id=12;
 ```
 
 **Output:**
