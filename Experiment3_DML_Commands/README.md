@@ -47,154 +47,309 @@ SELECT column1, column2 FROM table_name WHERE condition;
 ```
 **Question 1**
 --
-<img width="1215" height="621" alt="image" src="https://github.com/user-attachments/assets/5139e98b-6c21-4006-8d3e-c36b07348605" />
+-- Write a SQL statement to change the email column of employees table with 'Unavailable' for all employees in employees table.
 
-**Program**
+    Employees table
+    
+    ---------------
+    employee_id
+    
+    first_name
+    
+    last_name
+    
+    email
+    
+    phone_number
+    
+    hire_date
+    
+    job_id
+    
+    salary
+    
+    commission_pct
+    
+    manager_id
+    
+    department_id
+
 ```sql
-UPDATE purchases
-set per_unit_price = 25,total_price = quantity*25 
-where purchase_date ='2022-08-15' and product_id=12;
+--
+ UPDATE employees
+ SET email = 'Unavailable';
 ```
 
 **Output:**
 
-<img width="1783" height="410" alt="image" src="https://github.com/user-attachments/assets/ede36e66-5a0a-48a5-9f5f-c64d2dffabab" />
+![image](https://github.com/user-attachments/assets/4229fa68-a775-49dc-aa6c-61cbbb7520a3)
 
 
 **Question 2**
 ---
-<img width="705" height="221" alt="image" src="https://github.com/user-attachments/assets/18268d12-fb33-47df-9b43-5cbd6fbc9de6" />
+-- Write a SQL statement to Increase the selling price by 15% in the products table where quantity in stock is less than 50 and supplier ID is 10.
+    
+    Products Table 
+    
+    name          type       
+    ----------    ---------- 
+    
+    product_id     INT PRIMARY KEY        
+    
+    product_name   VARCHAR(10) 
+    
+    category       VARCHAR(50) 
+    
+    cost_price     DECIMAL(10) 
+    
+    sell_price     DECIMAL(10) 
+    
+    reorder_lv     INT        
+    
+    quantity       INT        
+    
+    supplier_id    INT       
 
-**Program**
 ```sql
-UPDATE suppliers
-set supplier_name='A1 Suppliers' where supplier_id=8;
+--
+UPDATE products
+SET sell_price = sell_price * 1.15
+WHERE quantity < 50 AND supplier_id = 10;
 ```
 
 **Output:**
 
-<img width="1847" height="391" alt="image" src="https://github.com/user-attachments/assets/dc26397a-be6a-4571-8e4b-ecbe6394f367" />
+![image](https://github.com/user-attachments/assets/ddd26284-60b8-47df-98d9-5ad5ffe3af1d)
+
 
 **Question 3**
 ---
-<img width="849" height="453" alt="image" src="https://github.com/user-attachments/assets/57caa6b0-4586-4dde-9bdd-71f57e5fd553" />
+-- Change the supplier name to upper case where contact person contains ' Singh' in suppliers table.
 
-**Program**
+    name               type
+    -----------------  ---------------
+    
+    supplier_id        INT
+    
+    supplier_name      VARCHAR(100)
+    
+    contact_person     VARCHAR(100)
+    
+    phone_number       VARCHAR(20)
+    
+    email              VARCHAR(100)
+    
+    address            VARCHAR(250)
+
 ```sql
-UPDATE PRODUCTS
-set sell_price=CAST(sell_price*1.1 as INT) where supplier_id=6;
+--
+ UPDATE suppliers
+SET supplier_name = UPPER(supplier_name)
+WHERE contact_person LIKE '% Singh';
+
 ```
 
 **Output:**
 
-<img width="1794" height="434" alt="image" src="https://github.com/user-attachments/assets/e0c5dd92-a4ac-497d-8db1-74bc8a600336" />
+![image](https://github.com/user-attachments/assets/cc0d6991-114d-4fc4-8768-ab940ed47ca9)
+
 
 **Question 4**
 ---
-<img width="1190" height="438" alt="image" src="https://github.com/user-attachments/assets/e52ce000-0dcd-4c8f-95d1-f4c2e2d2867f" />
+-- Write a SQL statement to Change the category to 'Household' where product name contains 'Detergent' in the products table.
 
-**Program**
+Products Table 
+
+name          type       
+----------    ---------- 
+
+    product_id     INT PRIMARY KEY      
+    
+    product_name   VARCHAR(10) 
+    
+    category       VARCHAR(50) 
+    
+    cost_price     DECIMAL(10) 
+    
+    sell_price     DECIMAL(10) 
+    
+    reorder_lvl    INT        
+    
+    quantity       INT        
+    
+    supplier_id    INT           
+
 ```sql
-UPDATE Employees
-SET email='not available',commission_pct=0.55 where department_id=110;
+--
+UPDATE products
+SET category = 'Household'
+WHERE product_name LIKE '%Detergent%';
 ```
 
 **Output:**
-<img width="1865" height="480" alt="image" src="https://github.com/user-attachments/assets/b3916b49-8ab2-442d-9943-933d0db33d04" />
+
+![image](https://github.com/user-attachments/assets/42bfcc8e-f75c-48f3-88e1-245bdb8b35c9)
 
 
 **Question 5**
 ---
-<img width="1113" height="515" alt="image" src="https://github.com/user-attachments/assets/09ad0820-12b6-4420-8cbf-90a1bd4278cf" />
+-- Write a SQL query to Delete customers from 'customer' table where 'CUST_CITY' is not 'New York' and 'OUTSTANDING_AMT' is greater than 5000.
 
-**Program**
+Sample table: Customer
+
+    +-----------+-------------+-------------+--------------+--------------+-------+-------------+-------------+-------------+---------------+--------------+------------+  
+    |CUST_CODE  | CUST_NAME   | CUST_CITY   | WORKING_AREA | CUST_COUNTRY | GRADE | OPENING_AMT | RECEIVE_AMT | PAYMENT_AMT |OUTSTANDING_AMT| PHONE_NO     | AGENT_CODE |
+    +-----------+-------------+-------------+--------------+--------------+-------+-------------+-------------+-------------+---------------+--------------+------------+
+    | C00013    | Holmes      | London      | London       | UK           |     2 |     6000.00 |     5000.00 |     7000.00 |       4000.00 | BBBBBBB      | A003       |
+    | C00001    | Micheal     | New York    | New York     | USA          |     2 |     3000.00 |     5000.00 |     2000.00 |       6000.00 | CCCCCCC      | A008       |
+    | C00020    | Albert      | New York    | New York     | USA          |     3 |     5000.00 |     7000.00 |     6000.00 |       6000.00 | BBBBSBB      | A008       |
 ```sql
-UPDATE Suppliers
-set address='58 Lakeview, Magnolia' where supplier_id=5;
+-- 
+DELETE FROM customer
+WHERE cust_city != 'New York'
+  AND outstanding_amt > 5000;
 ```
 
 **Output:**
 
-<img width="1829" height="333" alt="image" src="https://github.com/user-attachments/assets/48627199-2dd5-40cc-a335-6228897832ad" />
+![image](https://github.com/user-attachments/assets/528c7fc3-80b3-4bec-a8fd-9f28fa1a3e63)
 
 
 **Question 6**
 ---
-<img width="712" height="347" alt="image" src="https://github.com/user-attachments/assets/4e2d9788-57a5-4e35-b346-790a2c7ae7e4" />
+-- 
+Write a SQL query to Delete customers from 'customer' table where 'CUST_NAME' has exactly 6 characters.
 
-**Program**
+Sample table: Customer
+    
+    +-----------+-------------+-------------+--------------+--------------+-------+-------------+-------------+-------------+---------------+--------------+------------+  
+    |CUST_CODE  | CUST_NAME   | CUST_CITY   | WORKING_AREA | CUST_COUNTRY | GRADE | OPENING_AMT | RECEIVE_AMT | PAYMENT_AMT |OUTSTANDING_AMT| PHONE_NO     | AGENT_CODE |
+    +-----------+-------------+-------------+--------------+--------------+-------+-------------+-------------+-------------+---------------+--------------+------------+
+    | C00013    | Holmes      | London      | London       | UK           |     2 |     6000.00 |     5000.00 |     7000.00 |       4000.00 | BBBBBBB      | A003       |
+    | C00001    | Micheal     | New York    | New York     | USA          |     2 |     3000.00 |     5000.00 |     2000.00 |       6000.00 | CCCCCCC      | A008       |
+    | C00020    | Albert      | New York    | New York     | USA          |     3 |     5000.00 |     7000.00 |     6000.00 |       6000.00 | BBBBSBB      | A008       |
+
 ```sql
-DELETE from Doctors
-where doctor_id BETWEEN 2 and 4;
-
+-- 
+DELETE FROM customer
+WHERE LENGTH(cust_name) = 6;
 ```
 
 **Output:**
 
-<img width="1037" height="650" alt="image" src="https://github.com/user-attachments/assets/2c5e4f2e-9464-4bae-a457-c8c635b45c08" />
+![image](https://github.com/user-attachments/assets/46efbb4d-b863-48b9-9ef8-fb3020a8caaa)
 
 
 **Question 7**
 ---
-<img width="1099" height="317" alt="image" src="https://github.com/user-attachments/assets/7fb3af92-f5ce-41b5-9427-47153520faf0" />
+-- 
+Write a SQL query to Delete All Doctors with a NULL Last Name
 
-**Program**
+Sample table: Doctors
+    
+    attributes : doctor_id, first_name, last_name, specialization
+    For example:
+    
+    Test	Result
+    SELECT * FROM doctors;
+    doctor_id   first_name  last_name   specialization
+    ----------  ----------  ----------  --------------
+    1           John        Smith       Cardiology
+    2           Emily       Johnson     Orthopedics
+    3           Michael     Brown       Pediatrics
+    4           Febin                   Cardiology
+    doctor_id   first_name  last_name   specialization
+    ----------  ----------  ----------  --------------
+    1           John        Smith       Cardiology
+    2           Emily       Johnson     Orthopedics
+    3           Michael     Brown       Pediatrics
+
+
 ```sql
-DELETE from Customer
-where CUST_COUNTRY NOT IN('India','USA');
+--
+DELETE FROM doctors
+WHERE last_name IS NULL OR last_name = '';
 ```
 
 **Output:**
 
-<img width="1918" height="390" alt="image" src="https://github.com/user-attachments/assets/c616b763-c745-4276-8eb0-8e8babc73de2" />
+![image](https://github.com/user-attachments/assets/39e97d63-9ee9-47bb-9b19-42eb59bd6187)
 
 
 **Question 8**
 ---
-<img width="1434" height="425" alt="image" src="https://github.com/user-attachments/assets/d126074a-75d5-4656-9664-526f649cb8d5" />
+-- 
+Write a SQL query to delete a doctor from Doctors table whos specialization is 'Cardiology'
 
-**Program**
+Sample table: Doctors
+    
+    attributes : doctor_id, first_name, last_name, specialization
+
+
 ```sql
-DELETE from Customer
-where GRADE=3 and CUST_NAME LIKE'%BBB%' and PAYMENT_AMT>2000;
+-- 
+DELETE FROM doctors
+WHERE specialization = 'Cardiology';
 ```
 
 **Output:**
 
-<img width="1816" height="337" alt="image" src="https://github.com/user-attachments/assets/491e8268-b11b-4128-9dcd-63af1b4c06d2" />
+![image](https://github.com/user-attachments/assets/208b8ce5-4566-4332-9a3b-875569885795)
 
 
 **Question 9**
 ---
-Write a SQL query to delete a specific doctor from Doctors table whose ID is 1.
+-- 
+Write a SQL query to Delete customers from 'customer' table where 'GRADE' is less than 2.
 
-Sample table: Doctors
+ 
+    Sample table: Customer
+    
+    +-----------+-------------+-------------+--------------+--------------+-------+-------------+-------------+-------------+---------------+--------------+------------+  
+    |CUST_CODE  | CUST_NAME   | CUST_CITY   | WORKING_AREA | CUST_COUNTRY | GRADE | OPENING_AMT | RECEIVE_AMT | PAYMENT_AMT |OUTSTANDING_AMT| PHONE_NO     | AGENT_CODE |
+    +-----------+-------------+-------------+--------------+--------------+-------+-------------+-------------+-------------+---------------+--------------+------------+
+    | C00013    | Holmes      | London      | London       | UK           |     2 |     6000.00 |     5000.00 |     7000.00 |       4000.00 | BBBBBBB      | A003       |
+    | C00001    | Micheal     | New York    | New York     | USA          |     2 |     3000.00 |     5000.00 |     2000.00 |       6000.00 | CCCCCCC      | A008       |
+    | C00020    | Albert      | New York    | New York     | USA          |     3 |     5000.00 |     7000.00 |     6000.00 |       6000.00 | BBBBSBB      | A008       |
 
-attributes : doctor_id, first_name, last_name, specialization
-**Program**
 ```sql
-DELETE from Doctors
-where doctor_id=1;
+-- 
+DELETE FROM customer
+WHERE grade < 2;
 ```
 
 **Output:**
 
-<img width="1654" height="446" alt="image" src="https://github.com/user-attachments/assets/13d08945-148d-4623-a0f8-f2814c78daba" />
+![image](https://github.com/user-attachments/assets/2928fbd8-e7db-4951-b285-2e78c70f2781)
 
 
 **Question 10**
 ---
-<img width="1164" height="834" alt="image" src="https://github.com/user-attachments/assets/a0064fed-cd6e-41d6-a6b4-95b56631f8ba" />
+-- 
+Write a SQL query to locate the details of customers with grade values above 100. Return customer_id, cust_name, city, grade, and salesman_id.
 
-**Program**
+Sample table: customer
+
+     customer_id |   cust_name    |    city    | grade | salesman_id
+    
+    -------------+----------------+------------+-------+-------------
+    
+            3002 | Nick Rimando   | New York   |   100 |        5001
+    
+            3007 | Brad Davis     | New York   |   200 |        5001
+    
+            3005 | Graham Zusi    | California |   200 |        5002
+
 ```sql
-DELETE from Surgeries
-where surgery_id=3 or surgeon_id=4;
+-- 
+SELECT customer_id, cust_name, city, grade, salesman_id
+FROM customer
+WHERE grade > 100;
 ```
 
 **Output:**
 
-<img width="1153" height="862" alt="image" src="https://github.com/user-attachments/assets/e6049f32-90b8-4b75-b7df-123e336f86f9" />
+![image](https://github.com/user-attachments/assets/aee807ac-1c83-4c78-9adb-b38d51189bd0)
 
 
 ## RESULT
